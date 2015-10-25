@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Create Item</title>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            
+                <div class="container-fluid">
+                <div class="navbar-header">
+                    <h:link class="navbar-brand" outcome="home" value="Home"/>
+                    <a class="navbar-brand" href="#">License</a>
+                    <h:link class="navbar-brand" outcome="createitem" value="Create item"
+                            rendered="#{SessionBean.init}"/>
+                </div>
+                
+                <div class="navbar-collapse collapse">
+                    <h:form class="navbar-form navbar-right" rendered="#{not SessionBean.init}">
+                        <div class="form-group">
+                            <h:inputText class="form-control" value="#{CredentialsBean.email}"
+                                         a:placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputSecret class="form-control" value="#{CredentialsBean.password}"
+                                          a:placeholder="Password"/>
+                        </div>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign in"
+                                     action="#{SessionBean.login(CredentialsBean.email, CredentialsBean.password)}"/>
+                        &nbsp;
+                        <h:link class="navbar-link" outcome="register">Register</h:link>
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </h:form>
+                    <h:form class="navbar-form navbar-right" rendered="#{SessionBean.init}">
+                        <h:link class="navbar-link" outcome="account" value="#{SessionBean.email}"/>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign out"
+                                         action="#{SessionBean.logout()}"/>
+                        <h:form a:action="" class="search-form">
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                        </h:form>
+                    </h:form>
+                </div>
+                    
+                </div>
+
+        </nav>
+        <div class="jumbotron">
+            
+        </div>
+        <div class="container">
+            <h3>Create item</h3>
+            <h:form class="form-group" enctype="multipart/form-data">
+                <f:event listener="#{CreateItemBean.validate}" type="postValidate" />
+                <h:outputLabel for="title" value="Title:"/>
+                <br/>
+                <h:inputText id="title" class="form-control" a:placeholder="Title" required="true" 
+                             value="#{CreateItemBean.title}" requiredMessage="*"/>
+                <h:message for="title" style="color: red;"/>
+                <br/>
+                <br/>
+                <h:outputLabel for="description" value="Description:"/>
+                <br/>
+                <h:inputTextarea id="description" class="form-control" a:placeholder="Description" 
+                                 required="true" requiredMessage="*" style="height: 200px" 
+                                 value="#{CreateItemBean.description}"/>
+                <h:message for="description" style="color: red;"/>
+                <br/>
+                <h:outputLabel for="price" value="Price:"/>
+                <br/>
+                <h:inputText id="price" a:placeholder="Price" required="true" requiredMessage="*" 
+                             value="#{CreateItemBean.price}" a:type="number"/>
+                <h:message for="price" style="color: red;"/>
+                <br/>
+                <br/>
+                <h:outputLabel for="picture" value="Picture:"/>
+                <br/>
+                <p:fileUpload id="picture" a:placeholder="Image" required="true" requiredMessage="*"
+                             a:accept=".png,.jpeg" value="#{CreateItemBean.picture}"
+                             mode="simple"/>
+                <h:message for="picture" style="color: red;"/>
+                <br/>
+                <p:commandButton class="bottom-left" value="Create" ajax="false" action="#{CreateItemBean.create()}"/>
+            </h:form>
+        </div>
+        <hr/>
+        <footer>
+            <p>eersya</p>
+        </footer>
+    </h:body>
+</html>
+

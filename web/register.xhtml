@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Register</title>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.css"/>
+    </h:head>
+    <h:body>
+        <h:form class="form-group">
+            <nav class="navbar navbar-default navbar-static-top">
+                <h:link class="navbar-brand" outcome="home" value="Home"/>
+            </nav>
+            <div class="container">
+                
+                <f:event listener="#{RegisterBean.validate}" type="postValidate" />
+                
+                <h:outputLabel for="name" value="Name:"/>
+                <h:inputText id="name" value="#{RegisterBean.name}" required="true"
+                             requiredMessage="*" a:placeholder="Name"/>
+                <h:message for="name" style="color: red;" />
+                <br/>
+                <h:outputLabel for="lastname" value="Last Name:"/>
+                <h:inputText id="lastname" value="#{RegisterBean.lastname}" required="true"
+                             requiredMessage="*" a:placeholder="Lastname"/>
+                <h:message for="lastname" style="color: red;" />
+                <br/>
+                <h:outputLabel for="email" value="Email:"/>
+                <h:inputText id="email" a:type="email" value="#{RegisterBean.email}" required="true"
+                             requiredMessage="*" a:placeholder="Email"/>
+                <h:message for="email" style="color: red;" />
+                <br/>
+                <h:outputLabel for="pass" value="Password:"/>
+                <h:inputSecret id="pass" value="#{RegisterBean.password}" required="true"
+                             requiredMessage="*" a:placeholder="Password"/>
+                <h:message for="pass" style="color: red;" />
+                <br/>
+                <h:outputLabel for="retypepass" value="Retype Pass:"/>
+                <h:inputSecret id="retypepass" required="true"
+                             requiredMessage="*" a:placeholder="Retype pass"/>
+                <h:message for="retypepass" style="color: red;" />
+                <br/>
+                <h:outputLabel for="city" value="City:"/>
+                <h:selectOneListbox id="city" value="#{RegisterBean.city}" required="true"
+                                    requiredMessage="*">
+                    <f:selectItem itemValue="MX" itemLabel="Mexico"/>
+                </h:selectOneListbox>
+                <h:message for="city" style="color: red;" />
+                
+                <br/>
+                <h:outputLabel for="address" value="Address:"/>
+                <h:inputTextarea id="address" value="#{RegisterBean.address}" required="true"
+                             requiredMessage="*" a:placeholder="Address"/>
+                <h:message for="address" style="color: red;" />
+                <br/>
+                <h:commandButton id="signup" value="SignUp" action="#{RegisterBean.signUp()}"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

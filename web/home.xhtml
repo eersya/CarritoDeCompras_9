@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Una tienda</title>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.css"/>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/signin.css"/>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            
+                <div class="container-fluid">
+                <div class="navbar-header">
+                    <h:link class="navbar-brand" outcome="home" value="Home"/>
+                    <a class="navbar-brand" href="#">License</a>
+                    <h:link class="navbar-brand" outcome="createitem" value="Create item"
+                            rendered="#{SessionBean.init}"/>
+                </div>
+                
+                <div class="navbar-collapse collapse">
+                    <h:form class="navbar-form navbar-right" rendered="#{not SessionBean.init}">
+                        <div class="form-group">
+                            <h:inputText class="form-control" value="#{CredentialsBean.email}"
+                                         a:placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputSecret class="form-control" value="#{CredentialsBean.password}"
+                                          a:placeholder="Password"/>
+                        </div>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign in"
+                                     action="#{SessionBean.login(CredentialsBean.email, CredentialsBean.password)}"/>
+                        &nbsp;
+                        <h:link class="navbar-link" outcome="register">Register</h:link>
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </h:form>
+                    <h:form class="navbar-form navbar-right" rendered="#{SessionBean.init}">
+                        <h:link class="navbar-link" outcome="account" value="#{SessionBean.email}"/>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign out"
+                                         action="#{SessionBean.logout()}"/>
+                        <h:form a:action="" class="search-form">
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                        </h:form>
+                    </h:form>
+                </div>
+                    
+                </div>
+
+        </nav>
+        <div class="jumbotron"></div>
+        <div class="container">
+            <h1>Items</h1>
+            <h:panelGroup rendered="#{empty ItemListBean.items}">
+                <p>None :(</p>
+            </h:panelGroup>
+            <h:form rendered="#{not empty ItemListBean.items}">
+                <h:dataTable value="#{ItemListBean.items}" var="item">
+                    <h:column>
+                        <f:facet name="header">Item</f:facet>
+                        <h:outputLabel value="#{item.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price</f:facet>
+                        <h:outputLabel value="#{item.price}"/>
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="View" action="#{SessionBean.viewItem(item.id_item)}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+        <hr/>
+        <footer>
+                <p>eersya 2015</p>
+        </footer>
+    </h:body>
+</html>
+

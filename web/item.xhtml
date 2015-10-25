@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{SessionBean.getCurItem()}</title>
+        <link media="screen" rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body onload="#{IteamBean.loadData(SessionBean.getCurItem())}">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+            
+                <div class="container-fluid">
+                <div class="navbar-header">
+                    <h:link class="navbar-brand" outcome="home" value="Home"/>
+                    <a class="navbar-brand" href="#">License</a>
+                    <h:link class="navbar-brand" outcome="createitem" value="Create item"
+                            rendered="#{SessionBean.init}"/>
+                </div>
+                
+                <div class="navbar-collapse collapse">
+                    <h:form class="navbar-form navbar-right" rendered="#{not SessionBean.init}">
+                        <div class="form-group">
+                            <h:inputText class="form-control" value="#{CredentialsBean.email}"
+                                         a:placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputSecret class="form-control" value="#{CredentialsBean.password}"
+                                          a:placeholder="Password"/>
+                        </div>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign in"
+                                     action="#{SessionBean.login(CredentialsBean.email, CredentialsBean.password)}"/>
+                        &nbsp;
+                        <h:link class="navbar-link" outcome="register">Register</h:link>
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </h:form>
+                    <h:form class="navbar-form navbar-right" rendered="#{SessionBean.init}">
+                        <h:link class="navbar-link" outcome="account" value="#{SessionBean.email}"/>
+                        &nbsp;
+                        <h:commandButton class="btn btn-success" value="Sign out"
+                                         action="#{SessionBean.logout()}"/>
+                        <h:form a:action="" class="search-form">
+                        <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <h:inputText class="form-control" a:name="search" id="search" a:placeholder="search"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                        </h:form>
+                    </h:form>
+                </div>
+                    
+                </div>
+
+        </nav>
+            <div class="jumbotron">
+                
+            </div>
+            <div class="container">
+                <h:form>
+                    <h2>#{IteamBean.item.title}</h2>
+                    <h:outputLabel for="price" value="Price:"/>
+                    <h:outputText id="price" value="#{IteamBean.item.price}"/>
+                    <br/>
+                    <br/>
+                    <h:outputLabel for="description" value="Description:"/>
+                    <h:outputText id="description" value="#{IteamBean.item.description}"/>
+                    <br/>
+                    <p:graphicImage value="#{IteamBean.chart}"/>
+                    <br/>
+                    <h:commandButton value="Purchase" action="#{SessionBean.doPurchase(IteamBean.item.id_item)}"/>
+                </h:form>
+                
+            </div>
+    </h:body>
+</html>
+
