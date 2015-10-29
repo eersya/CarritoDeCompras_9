@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import mx.eersya.database.sssitems.actions.ItemList;
-import mx.eersya.database.sssitems.models.SimpletItem;
+import mx.eersya.database.carritoItems.actions.ItemList;
+import mx.eersya.database.carritosItems.models.SimpletItem;
 
 /**
  *

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssitems.actions;
+package mx.eersya.database.carritoItems.actions;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import mx.eersya.database.ConnectionTemplate;
-import mx.eersya.database.sssitems.Constant;
+import mx.eersya.database.carritoItems.DatabaseProperties;
 
 /**
  *
  * @author eersya
  */
-public class DBItem extends ConnectionTemplate implements Constant {
+public class DBItem extends ConnectionTemplate implements DatabaseProperties {
     
     public DBItem() {
         super();

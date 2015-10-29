@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssusers.actions;
+package mx.eersya.database.carritoUsers.actions;
 
 import java.sql.SQLException;
 import mx.eersya.database.ConnectionTemplate;
@@ -12,7 +12,7 @@ import mx.eersya.database.ConnectionTemplate;
  *
  * @author eersya
  */
-public class UserAcess extends ConnectionTemplate  implements mx.eersya.database.sssusers.Constant {
+public class UserAcess extends ConnectionTemplate  implements mx.eersya.database.carritoUsers.DatabaseProperties {
     
     public static boolean login(String email, String password) {
         UserAcess x = new UserAcess();

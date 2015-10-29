@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssitems;
+package mx.eersya.database.carritoUsers;
 
 /**
  *
  * @author eersya
  */
-public interface Constant {
+public interface DatabaseProperties {
     
-    final String dbURL = "jdbc:mysql://localhost/sssitems";
-    final String dbUser = "c";
-    final String dbPassword = "kkkk134";
+    final String dbURL = "jdbc:mysql://localhost/sssusers";
+    final String dbUser = "a";
+    final String dbPassword = "8991*";
     
 }

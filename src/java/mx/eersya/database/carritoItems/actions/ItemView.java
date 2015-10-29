@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssitems.actions;
+package mx.eersya.database.carritoItems.actions;
 
 import java.sql.SQLException;
 import mx.eersya.database.ConnectionTemplate;
-import mx.eersya.database.sssitems.Constant;
-import mx.eersya.database.sssitems.models.Item;
+import mx.eersya.database.carritoItems.DatabaseProperties;
+import mx.eersya.database.carritosItems.models.Items;
 
 /**
  *
  * @author eersya
  */
-public class ItemView extends ConnectionTemplate implements Constant {
+public class ItemView extends ConnectionTemplate implements DatabaseProperties {
     
     public ItemView() {
         super();
     }
     
-    public static Item loadItem(Integer id_item) {
-        Item item = new Item();
+    public static Items loadItem(Integer id_item) {
+        Items item = new Items();
         ItemView iv = new ItemView();
         try {
             iv.openConnection(dbURL, dbUser, dbPassword);
@@ -29,13 +29,13 @@ public class ItemView extends ConnectionTemplate implements Constant {
             iv.st = iv.conn.createStatement();
             iv.rs = iv.st.executeQuery(sql);
             while(iv.rs.next()) {
-                item.setId_item(iv.rs.getInt("id_item"));
+                item.setIdItem(iv.rs.getInt("id_item"));
                 item.setTitle(iv.rs.getString("title"));
                 item.setDescription(iv.rs.getString("description"));
-                item.setPrice(iv.rs.getBigDecimal("price"));
+                item.setPrice(iv.rs.getLong("price"));
                 item.setVendor(iv.rs.getInt("vendor"));
-                item.setPicturePath(iv.rs.getString("picturepath"));
-                System.out.println("PPPPP:" + item.getPicturePath());
+                item.setPicturepath(iv.rs.getString("picturepath"));
+                System.out.println("New image:" + item.getPicturepath());
             }
         } catch(SQLException ex) {
             System.err.println(ex);

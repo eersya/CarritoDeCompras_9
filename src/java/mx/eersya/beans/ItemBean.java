@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import mx.eersya.database.sssitems.actions.ItemView;
-import mx.eersya.database.sssitems.models.Item;
+import mx.eersya.database.carritoItems.actions.ItemView;
+import mx.eersya.database.carritosItems.models.Items;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -22,7 +22,7 @@ import org.primefaces.model.StreamedContent;
 @ViewScoped
 public class ItemBean {
     
-    private Item item;
+    private Items item;
     private StreamedContent chart;
 
     /**
@@ -31,11 +31,11 @@ public class ItemBean {
     public ItemBean() {
     }
 
-    public Item getItem() {
+    public Items getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(Items item) {
         this.item = item;
     }
 
@@ -53,7 +53,7 @@ public class ItemBean {
         System.out.println(id_tem);
         item = ItemView.loadItem(id_tem);
         try {
-            File chartFile = new File(item.getPicturePath());
+            File chartFile = new File(item.getPicturepath());
             chart = new DefaultStreamedContent(new FileInputStream(chartFile), "image/png");
         } catch(Exception ex) {
             

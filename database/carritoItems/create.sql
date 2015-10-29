@@ -1,19 +1,21 @@
 
-## Create database
+# CarritoItems
 
-drop database if exists sssitems;
-create database sssitems;
-use sssitems;
+drop database if exists carritoItems;
+create database carritoItems;
+use carritoItems;
 
 create table items(id_item int primary key auto_increment, title varchar(30),
 		description tinytext,
                 price decimal(10), vendor int, picturepath varchar(100),
-		foreign key(vendor) references sssusers.vendors(id_vendor));
+		foreign key(vendor) references carritoUsers.vendors(id_vendor));
 
-drop user 'c'@'localhost' ;
+# drop user 'c'@'localhost' ;
 create user 'c'@'localhost' identified by 'kkkk134';
-grant select,execute on sssitems.* to 'c'@'localhost';
+grant select,execute on carritoItems.* to 'c'@'localhost';
 grant select on mysql.proc to 'c'@'localhost';
+
+# Procedures
 
 delimiter //
 	create procedure add_item(In title_s varchar(30), description_s tinytext, 
@@ -25,7 +27,3 @@ delimiter //
         insert into items(title,description,price,vendor,picturepath) 
             values(title_s, description_s, price_s, iduser,picturepath_s);
     end//
-
-
-
-insert into items(title, description, price, vendor) values('Colin','Colin en buenas.',346.08, 1);

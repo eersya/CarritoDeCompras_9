@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssitems.actions;
+package mx.eersya.database.carritoItems.actions;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import mx.eersya.database.ConnectionTemplate;
-import mx.eersya.database.sssitems.Constant;
-import mx.eersya.database.sssitems.models.SimpletItem;
+import mx.eersya.database.carritoItems.DatabaseProperties;
+import mx.eersya.database.carritosItems.models.SimpletItem;
 
 /**
  *
  * @author eersya
  */
-public class ItemList extends ConnectionTemplate implements Constant {
+public class ItemList extends ConnectionTemplate implements DatabaseProperties {
     
     public ItemList() {
         super();

@@ -13,7 +13,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
-import mx.eersya.database.sssusers.actions.RegisterUser;
+import mx.eersya.database.carritoUsers.actions.RegisterUser;
 
 /**
  *
@@ -173,7 +173,7 @@ public class RegisterBean {
     }
     
     public String signUp() {
-        mx.eersya.database.sssusers.actions.RegisterUser register = new mx.eersya.database.sssusers.actions.RegisterUser();
+        mx.eersya.database.carritoUsers.actions.RegisterUser register = new mx.eersya.database.carritoUsers.actions.RegisterUser();
         register.register(name, lastname, email, password, address, city);
         return "home";
     }

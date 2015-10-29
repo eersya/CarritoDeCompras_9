@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.eersya.database.sssusers.actions;
+package mx.eersya.database.carritoUsers.actions;
 
 import java.sql.SQLException;
 import mx.eersya.database.ConnectionTemplate;
-import mx.eersya.database.sssusers.Constant;
+import mx.eersya.database.carritoUsers.DatabaseProperties;
 
 /**
  *
  * @author eersya
  */
-public class RegisterUser extends ConnectionTemplate implements Constant {
+public class RegisterUser extends ConnectionTemplate implements DatabaseProperties {
 
     public RegisterUser() {
         super();

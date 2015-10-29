@@ -17,7 +17,7 @@ import java.nio.file.StandardCopyOption;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ComponentSystemEvent;
-import mx.eersya.database.sssitems.actions.DBItem;
+import mx.eersya.database.carritoItems.actions.DBItem;
 import org.apache.commons.io.FilenameUtils;
 import org.primefaces.model.UploadedFile;
 
