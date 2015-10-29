@@ -11,7 +11,7 @@ package mx.eersya.database.carritoUsers;
  */
 public interface DatabaseProperties {
     
-    final String dbURL = "jdbc:mysql://localhost/sssusers";
+    final String dbURL = "jdbc:mysql://localhost/carritoUsers";
     final String dbUser = "a";
     final String dbPassword = "8991*";
     
