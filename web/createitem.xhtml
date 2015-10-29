@@ -83,7 +83,7 @@
                 <h:outputLabel for="price" value="Price:"/>
                 <br/>
                 <h:inputText id="price" a:placeholder="Price" required="true" requiredMessage="*" 
-                             value="#{CreateItemBean.price}" a:type="number"/>
+                             value="#{CreateItemBean.price}" a:type="number" a:step="0.01"/>
                 <h:message for="price" style="color: red;"/>
                 <br/>
                 <br/>
@@ -94,7 +94,7 @@
                              mode="simple"/>
                 <h:message for="picture" style="color: red;"/>
                 <br/>
-                <p:commandButton class="bottom-left" value="Create" ajax="false" action="#{CreateItemBean.create()}"/>
+                <h:commandButton class="bottom-left" value="Create" p:ajax="false" action="#{CreateItemBean.create()}"/>
             </h:form>
         </div>
         <hr/>
