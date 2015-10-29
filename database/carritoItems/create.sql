@@ -23,7 +23,7 @@ delimiter //
     begin
         declare iduser int;
         select id_user into iduser
-        from sssusers.users where sssusers.users.email=email_s;
+        from carritoUsers.users where carritoUsers.users.email=email_s;
         insert into items(title,description,price,vendor,picturepath) 
             values(title_s, description_s, price_s, iduser,picturepath_s);
     end//
